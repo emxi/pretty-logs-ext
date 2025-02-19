@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Pretty logs",
+  "version": "1.0",
+  "description": "Pretty logs",
+  "icons": {
+    "16": "logos/logo-small.png",
+    "32": "logos/logo-medium.png",
+    "48": "logos/logo-large.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": []
+    }
+  ]
+}
