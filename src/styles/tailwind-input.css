@@ -7,26 +7,14 @@
   p,
   div,
   button {
-    @apply text-slate-600;
+    @apply text-slate-800;
   }
 }
 
 @layer components {
-  .app-sidebar-content {
-    flex: 1;
-  }
-
-  .app-sidebar-resizer {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 6px;
-    justify-self: flex-end;
-    cursor: col-resize;
-    resize: horizontal;
-  }
-
-  .app-sidebar-resizer:hover {
-    width: 3px;
-    background: #c1c3c5b4;
+  .glass {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   }
 }

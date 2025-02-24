@@ -28,7 +28,7 @@ export default function Panel() {
 
   function getNavClassName({ isActive }: NavLinkRenderProps) {
     return clsx(
-      'flex flex-1 items-center justify-center py-3 text-center hover:bg-violet-50',
+      'flex flex-1 items-center justify-center py-3 text-center bg-transparent hover:bg-violet-600/10',
       {
         'text-violet-600': isActive,
       }
@@ -37,14 +37,14 @@ export default function Panel() {
 
   return (
     <ResizableSidebar>
-      <div className="h-full w-full flex flex-col">
+      <div className="glass flex h-full w-full flex-col border-l shadow-xl">
         <div className="flex items-center justify-between border-b p-3">
           <h1 className="flex items-center space-x-3 text-xl font-semibold">
             <LogoIcon />
             <p>Pretty logs</p>
           </h1>
           <button
-            className="flex size-8 items-center justify-center rounded-full hover:bg-violet-50"
+            className="flex size-8 items-center justify-center rounded-full hover:bg-violet-600/10"
             onClick={() => dispatch(panelActions.hide())}
           >
             <XMarkSolidIcon />

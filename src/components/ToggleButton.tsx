@@ -16,7 +16,7 @@ export default function ToggleButton() {
 
   return (
     <button
-      className="absolute z-[9999] rounded border bg-white p-1 text-violet-600 shadow hover:bg-violet-100"
+      className="glass absolute z-[9999] rounded border p-1 hover:bg-violet-300/20"
       style={{
         left: `${state.position.x}px`,
         top: `${state.position.y + 20}px`,

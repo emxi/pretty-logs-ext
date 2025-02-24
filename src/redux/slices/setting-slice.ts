@@ -23,7 +23,7 @@ const DEFAULT_SETTING_STATE: SettingState = {
   automation: {
     isAutoFormat: true,
     isAutoEscape: true,
-    isTriggerOnSelect: true,
+    isTriggerOnSelect: false,
     isAutoFindBracket: true,
   },
 }

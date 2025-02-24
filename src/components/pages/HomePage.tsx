@@ -9,6 +9,15 @@ import { RootState } from '../../redux/store'
 import monacoStyles from '../../styles/monaco.css?inline'
 import { StringUtils } from '../../utils/string-utils'
 
+monaco.editor.defineTheme('my-theme', {
+  base: 'vs',
+  inherit: true,
+  rules: [],
+  colors: {
+    'editor.background': '#ffffff77',
+    'minimap.background': '#ffffff77',
+  },
+})
 loader.config({ monaco })
 
 export default function HomePage() {
@@ -32,11 +41,11 @@ export default function HomePage() {
   }, [panelState.text])
 
   return (
-    <div className="h-full py-3">
-      <div className="h-full flex flex-col space-y-3">
-        <div className="flex space-x-1 px-3">
+    <div className="h-full">
+      <div className="flex h-full flex-col">
+        <div className="flex space-x-1 px-3 py-3">
           <button
-            className="px-2 py-1 border border-violet-500 text-violet-600 space-x-1 hover:bg-violet-50 hover:border-violet-600 rounded-md flex items-center"
+            className="flex items-center space-x-1 rounded-md border border-violet-500 px-2 py-1 text-violet-600 hover:border-violet-700 hover:bg-violet-600/10"
             onClick={() =>
               setTransformText(StringUtils.unescapeIfCould(transformText))
             }
@@ -45,7 +54,7 @@ export default function HomePage() {
             <p className="text-violet-600">Unescape</p>
           </button>
           <button
-            className="px-2 py-1 border border-violet-500 text-violet-600 space-x-1 hover:bg-violet-50 hover:border-violet-600 rounded-md flex items-center"
+            className="flex items-center space-x-1 rounded-md border border-violet-500 px-2 py-1 text-violet-600 hover:border-violet-600 hover:bg-violet-600/10"
             onClick={() =>
               setTransformText(
                 StringUtils.format(transformText, setting.editor.tabSize)
@@ -65,7 +74,11 @@ export default function HomePage() {
             onChange={(text) => setTransformText(text ?? '')}
             options={{
               wordWrap: 'on',
+              padding: {
+                top: 4,
+              },
             }}
+            theme="my-theme"
           />
         </root.div>
       </div>

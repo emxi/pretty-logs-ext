@@ -41,11 +41,13 @@ export default function ResizableSidebar({
   return (
     <div
       ref={sidebarRef}
-      className="min-w-[500px] fixed text-sm bottom-0 right-0 top-0 z-[9999] flex border items-stretch border-l bg-white shadow-xl"
+      className="fixed bottom-0 right-0 top-0 z-[9999] flex min-w-[500px] items-stretch text-sm"
       style={{ width: sidebarWidth }}
-      onMouseDown={(e) => e.preventDefault()}
     >
-      <div className="app-sidebar-resizer" onMouseDown={startResizing} />
+      <div
+        className="shrink-0 grow-0 basis-1 cursor-col-resize resize-x hover:w-1 hover:bg-violet-200"
+        onMouseDown={startResizing}
+      />
       {children}
     </div>
   )
