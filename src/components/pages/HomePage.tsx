@@ -1,10 +1,11 @@
 import { Editor, loader } from '@monaco-editor/react'
 import * as monaco from 'monaco-editor'
-import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import root from 'react-shadow'
 import PaintBrushOutlineIcon from '../../assets/svgs/paint-brush/PaintBrushOutlineIcon'
 import SparklesOutlineIcon from '../../assets/svgs/sparkles/SparklesOutlineIcon'
+import { panelActions } from '../../redux/slices/panel-slice'
 import { RootState } from '../../redux/store'
 import monacoStyles from '../../styles/monaco.css?inline'
 import { StringUtils } from '../../utils/string-utils'
@@ -21,22 +22,22 @@ monaco.editor.defineTheme('my-theme', {
 loader.config({ monaco })
 
 export default function HomePage() {
-  const [transformText, setTransformText] = useState('')
   const setting = useSelector((state: RootState) => state.setting)
   const panelState = useSelector((state: RootState) => state.panel)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     let escapedText = panelState.text
     try {
-      if (setting.automation.isAutoEscape) {
+      if (setting.common.isAutoEscape) {
         escapedText = StringUtils.unescapeRecursive(escapedText)
       }
-      if (setting.automation.isAutoFormat) {
+      if (setting.common.isAutoFormat) {
         escapedText = StringUtils.format(escapedText, setting.editor.tabSize)
       }
-      setTransformText(escapedText)
+      dispatch(panelActions.setEditingText(escapedText))
     } catch {
-      setTransformText(escapedText)
+      dispatch(panelActions.setEditingText(escapedText))
     }
   }, [panelState.text])
 
@@ -47,7 +48,11 @@ export default function HomePage() {
           <button
             className="flex items-center space-x-1 rounded-md border border-violet-500 px-2 py-1 text-violet-600 hover:border-violet-700 hover:bg-violet-600/10"
             onClick={() =>
-              setTransformText(StringUtils.unescapeIfCould(transformText))
+              dispatch(
+                panelActions.setEditingText(
+                  StringUtils.unescapeIfCould(panelState.editingText)
+                )
+              )
             }
           >
             <SparklesOutlineIcon className="size-5" />
@@ -56,8 +61,13 @@ export default function HomePage() {
           <button
             className="flex items-center space-x-1 rounded-md border border-violet-500 px-2 py-1 text-violet-600 hover:border-violet-600 hover:bg-violet-600/10"
             onClick={() =>
-              setTransformText(
-                StringUtils.format(transformText, setting.editor.tabSize)
+              dispatch(
+                panelActions.setEditingText(
+                  StringUtils.format(
+                    panelState.editingText,
+                    setting.editor.tabSize
+                  )
+                )
               )
             }
           >
@@ -70,8 +80,10 @@ export default function HomePage() {
           <Editor
             height="100%"
             defaultLanguage="json"
-            value={transformText}
-            onChange={(text) => setTransformText(text ?? '')}
+            value={panelState.editingText}
+            onChange={(text) =>
+              dispatch(panelActions.setEditingText(text || ''))
+            }
             options={{
               wordWrap: 'on',
               padding: {

@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 export type PanelState = {
   page: string
   text: string
+  editingText: string
   isShow: boolean
   blankPageText: string
 }
@@ -10,8 +11,14 @@ export type PanelState = {
 const DEFAULT_PANEL_STATE: PanelState = {
   page: '/home',
   text: '',
+  editingText: '',
   isShow: false,
-  blankPageText: '',
+  blankPageText: getBlankPageTextFromLocalStorage(),
+}
+
+function getBlankPageTextFromLocalStorage() {
+  const localState = localStorage.getItem('pretty-logs-ext.blank-page-text')
+  return localState || ''
 }
 
 export const panelSlice = createSlice({
@@ -28,6 +35,10 @@ export const panelSlice = createSlice({
 
     setText(state, action: PayloadAction<string>) {
       state.text = action.payload
+    },
+
+    setEditingText(state, action: PayloadAction<string>) {
+      state.editingText = action.payload
     },
 
     setBlankPageText(state, action: PayloadAction<string>) {

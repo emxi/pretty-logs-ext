@@ -1,4 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+export enum OpenPanelType {
+  OnSelect = 'ON_SELECT',
+  ToggleButton = 'TOGGLE_BUTTON',
+  ToggleExt = 'TOGGLE_EXT',
+}
 
 export type SettingState = {
   editor: {
@@ -6,35 +12,40 @@ export type SettingState = {
     wordWrap: 'on' | 'off'
   }
   toggleButton: {}
-  automation: {
+  common: {
     isAutoFormat: boolean
     isAutoEscape: boolean
-    isTriggerOnSelect: boolean
-    isAutoFindBracket: boolean
+    triggerOpenPanel: OpenPanelType
   }
 }
 
-const DEFAULT_SETTING_STATE: SettingState = {
-  editor: {
-    tabSize: 2,
-    wordWrap: 'on',
-  },
-  toggleButton: {},
-  automation: {
-    isAutoFormat: true,
-    isAutoEscape: true,
-    isTriggerOnSelect: false,
-    isAutoFindBracket: true,
-  },
-}
+const DEFAULT_SETTING_STATE: SettingState = (() => {
+  const localState = localStorage.getItem('pretty-logs-ext.setting')
+  if (localState) {
+    return JSON.parse(localState)
+  }
+
+  return {
+    editor: {
+      tabSize: 2,
+      wordWrap: 'on',
+    },
+    toggleButton: {},
+    common: {
+      isAutoFormat: true,
+      isAutoEscape: true,
+      triggerOpenPanel: OpenPanelType.OnSelect,
+    },
+  }
+})()
 
 export const settingSlice = createSlice({
   name: 'setting',
   initialState: DEFAULT_SETTING_STATE,
   reducers: {
-    // updateSetting: (state, action: PayloadAction<SettingState>) => {
-    //   state = action.payload
-    // },
+    updateSetting: (_state, action: PayloadAction<SettingState>) => {
+      return action.payload
+    },
   },
 })
 

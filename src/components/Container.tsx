@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { panelActions } from '../redux/slices/panel-slice.ts'
+import { OpenPanelType } from '../redux/slices/setting-slice.ts'
 import { toggleButtonActions } from '../redux/slices/toggle-button-slice.ts'
 import { RootState } from '../redux/store.ts'
 import findMatchingBracketInRange from '../utils/bracket-utils.ts'
@@ -44,7 +45,7 @@ export default function Container() {
 
       const text = matchedText?.content || ''
       if (text.length > 0) {
-        if (setting.automation.isTriggerOnSelect) {
+        if (setting.common.triggerOpenPanel === OpenPanelType.OnSelect) {
           dispatch(panelActions.setText(text))
           dispatch(panelActions.show())
         } else {
@@ -67,7 +68,7 @@ export default function Container() {
     return () => {
       document.removeEventListener('mouseup', handleTextSelection)
     }
-  }, [dispatch])
+  }, [setting])
 
   return (
     <>
