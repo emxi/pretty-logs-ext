@@ -1,50 +1,54 @@
-# React + TypeScript + Vite
+# Pretty logs Chrome extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+This extension makes checking logs on OpenSearch easier
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Development
 
-## Expanding the ESLint configuration
+### Requirements
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Node.js >= 20
+- npm or yarn
 
-- Configure the top-level `parserOptions` property like this:
+### Run in Development Mode
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install
+npm run dev
+# or
+yarn install
+yarn dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Build
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Build from Source
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm run build
+# or
+yarn build
 ```
+
+After building, the output files will be available in the `dist` folder.
+
+### Download Assets from GitHub
+
+You can also download the pre-built `dist` folder from the latest release on the GitHub repository.
+
+## Install Extension in Browsers
+
+### Chrome
+
+1. Open Chrome and navigate to `chrome://extensions/`
+2. Enable "Developer mode"
+3. Click "Load unpacked"
+4. Select the `dist` folder
+
+### Firefox
+
+1. Open Firefox and go to `about:addons`
+2. Enable "Debug mode"
+3. Click "Load Temporary Add-on..."
+4. Select the `manifest.json` file in the `dist` folder
