@@ -4,12 +4,14 @@ export type PanelState = {
   page: string
   text: string
   isShow: boolean
+  blankPageText: string
 }
 
 const DEFAULT_PANEL_STATE: PanelState = {
   page: '/home',
   text: '',
   isShow: false,
+  blankPageText: '',
 }
 
 export const panelSlice = createSlice({
@@ -26,6 +28,10 @@ export const panelSlice = createSlice({
 
     setText(state, action: PayloadAction<string>) {
       state.text = action.payload
+    },
+
+    setBlankPageText(state, action: PayloadAction<string>) {
+      state.blankPageText = action.payload
     },
   },
 })

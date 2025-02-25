@@ -1,3 +1,4 @@
+import { DocumentIcon } from '@heroicons/react/24/solid'
 import clsx from 'clsx'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
@@ -7,6 +8,7 @@ import HomeSolidIcon from '../assets/svgs/home/HomeSolidIcon.tsx'
 import LogoIcon from '../assets/svgs/logo/LogoIcon.tsx'
 import XMarkSolidIcon from '../assets/svgs/x-mark/XMarkSolidIcon.tsx'
 import { panelActions } from '../redux/slices/panel-slice.ts'
+import BlankPage from './pages/BlankPage.tsx'
 import HomePage from './pages/HomePage.tsx'
 import SettingPage from './pages/SettingPage.tsx'
 import ResizableSidebar from './ResizableSidebar.tsx'
@@ -54,6 +56,7 @@ export default function Panel() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/setting" element={<SettingPage />} />
+            <Route path="/blank" element={<BlankPage />} />
           </Routes>
         </div>
         <div className="flex border-t">
@@ -62,6 +65,9 @@ export default function Panel() {
           </NavLink>
           <NavLink to="/setting" className={getNavClassName}>
             <Cog6ToothSolidIcon />
+          </NavLink>
+          <NavLink to="/blank" className={getNavClassName}>
+            <DocumentIcon className="size-6" />
           </NavLink>
         </div>
       </div>
