@@ -63,11 +63,11 @@ export default function Panel() {
           <NavLink to="/" className={getNavClassName}>
             <HomeSolidIcon />
           </NavLink>
-          <NavLink to="/setting" className={getNavClassName}>
-            <Cog6ToothSolidIcon />
-          </NavLink>
           <NavLink to="/blank" className={getNavClassName}>
             <DocumentIcon className="size-6" />
+          </NavLink>
+          <NavLink to="/setting" className={getNavClassName}>
+            <Cog6ToothSolidIcon />
           </NavLink>
         </div>
       </div>

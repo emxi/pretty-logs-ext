@@ -8,8 +8,11 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+.vscode
 dist
 dist-ssr
+pretty-logs-dist
+pretty-logs-dist.zip
 *.local
 
 # Editor directories and files

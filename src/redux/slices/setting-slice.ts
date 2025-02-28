@@ -34,7 +34,7 @@ const DEFAULT_SETTING_STATE: SettingState = (() => {
     common: {
       isAutoFormat: true,
       isAutoEscape: true,
-      triggerOpenPanel: OpenPanelType.OnSelect,
+      triggerOpenPanel: OpenPanelType.ToggleButton,
     },
   }
 })()

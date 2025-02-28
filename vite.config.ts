@@ -12,5 +12,7 @@ export default defineConfig({
         format: 'iife',
       },
     },
+    outDir: 'pretty-logs-dist',
+    chunkSizeWarningLimit: 10000,
   },
 })
