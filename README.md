@@ -1,4 +1,4 @@
-# Chrome Extension with Vite
+# Pretty Logs Extension
 
 ## 🔥 Pretty Logs: Faster, Easier Log Checking!
 
