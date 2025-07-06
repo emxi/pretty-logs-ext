@@ -1547,6 +1547,11 @@ loose-envify@^1.4.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
+lossless-json@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lossless-json/-/lossless-json-4.1.1.tgz#b7cbac00c222a68072a9037563dfc4c71cee52f0"
+  integrity sha512-HusN80C0ohtT9kOHQH7EuUaqzRQsnekpa+2ot8OzvW0iC08dq/YtM/7uKwwajldQsCrHyC8q9fz3t3L+TmDltA==
+
 lru-cache@^10.2.0:
   version "10.4.3"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-10.4.3.tgz#410fc8a17b70e598013df257c2446b7f3383f119"

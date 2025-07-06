@@ -1,7 +1,7 @@
 {
   "name": "pretty-logs-ext",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.2",
   "type": "module",
   "scripts": {
     "dev": "vite & npx tailwindcss -i ./src/styles/tailwind-input.css -o ./src/styles/tailwind-output.css --watch",
@@ -15,6 +15,7 @@
     "@monaco-editor/react": "^4.6.0",
     "@reduxjs/toolkit": "^2.5.1",
     "clsx": "^2.1.1",
+    "lossless-json": "^4.1.1",
     "monaco-editor": "^0.43.0",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",

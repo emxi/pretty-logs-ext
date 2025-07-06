@@ -1,3 +1,5 @@
+import { parse, stringify } from 'lossless-json'
+
 function unescape(s: string): string {
   return s.replace(/\\\\/g, '\\').replace(/\\"/g, '"').replace(/\\'/g, "'")
 }
@@ -19,7 +21,7 @@ function isAllowUnescape(s: string): boolean {
 }
 
 function format(s: string, tabSize: number): string {
-  return JSON.stringify(JSON.parse(s), null, tabSize)
+  return stringify(parse(s), null, tabSize) || ''
 }
 
 function unescapeRecursive(s: string): string {

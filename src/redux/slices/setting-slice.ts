@@ -11,7 +11,7 @@ export type SettingState = {
     tabSize: number
     wordWrap: 'on' | 'off'
   }
-  toggleButton: {}
+  toggleButton: object
   common: {
     isAutoFormat: boolean
     isAutoEscape: boolean
